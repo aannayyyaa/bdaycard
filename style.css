@@ -1,0 +1,214 @@
+/* Pengaturan dasar untuk halaman */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  font-family: "Helvetica", "Arial", sans-serif;
+  margin: 0;
+  overflow: hidden; /* Mencegah scrollbar */
+}
+
+/* Kontainer utama kartu untuk efek 3D */
+.birthday-card {
+  width: 320px;
+  height: 450px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+/* Bagian dalam yang akan berputar */
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+/* Saat kursor diarahkan ke kartu, putar bagian dalamnya */
+.birthday-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Pengaturan umum untuk sisi depan dan belakang kartu */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Desain untuk sisi depan kartu */
+.card-front {
+  background-color: #ffdeea;
+  z-index: 2;
+}
+
+.instruction {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+  font-style: italic;
+}
+
+/* Desain untuk sisi belakang (isi ucapan) */
+.card-back {
+  background-color: #ffffff;
+  transform: rotateY(180deg);
+  z-index: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.card-back h2 {
+  color: #e83e8c;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.card-back p {
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Desain Kue Ulang Tahun (menggunakan CSS) */
+.cake {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.candle {
+  position: absolute;
+  width: 8px;
+  height: 40px;
+  background: repeating-linear-gradient(
+    45deg,
+    #f98b88,
+    #f98b88 5px,
+    #fff 5px,
+    #fff 10px
+  );
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 4px 4px 0 0;
+}
+
+.candle::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #ffc107;
+  border-radius: 50%;
+  top: -8px;
+  box-shadow: 0 0 10px #ffc107, 0 0 20px #ffc107;
+}
+
+.top {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background-color: #f2a2e8;
+  border-radius: 50% 50% 50% 50% / 15px 15px 15px 15px;
+  top: 0;
+}
+
+.middle {
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  background-color: #f9c2d2;
+  top: 25px;
+}
+
+.bottom {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  background-color: #f7a3b5;
+  top: 85px;
+  border-radius: 0 0 10px 10px;
+}
+
+/* ===== KODE TAMBAHAN UNTUK BALON ===== */
+.balloon-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.balloon {
+  position: absolute;
+  width: 70px;
+  height: 90px;
+  background-color: rgba(255, 99, 71, 0.8);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: flyUp 15s linear infinite;
+  bottom: -150px;
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid rgba(0, 0, 0, 0.2);
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes flyUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-120vh);
+  }
+}
+
+.balloon:nth-child(2) {
+  left: 25%;
+  animation-duration: 20s;
+  animation-delay: 2s;
+  background-color: rgba(63, 191, 191, 0.8);
+}
+
+.balloon:nth-child(3) {
+  left: 45%;
+  animation-duration: 12s;
+  animation-delay: 5s;
+  background-color: rgba(255, 223, 87, 0.8);
+}
+
+.balloon:nth-child(4) {
+  left: 65%;
+  animation-duration: 18s;
+  animation-delay: 1s;
+  background-color: rgba(138, 43, 226, 0.8);
+}
+
+.balloon:nth-child(5) {
+  left: 85%;
+  animation-duration: 14s;
+  animation-delay: 7s;
+  background-color: rgba(127, 255, 0, 0.8);
+}
